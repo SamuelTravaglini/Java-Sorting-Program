@@ -1,3 +1,9 @@
+/* Quick Sort Algorithm Class
+** Based on algorithm from Curtin University COMP1001 Lecture
+** Author: Samuel Travaglini
+** Time complexity: O(NlogN)
+*/
+
 public class MergeSort {
     
     public void mergeSort(int[] sortArray, int leftId, int rightId)
@@ -9,21 +15,52 @@ public class MergeSort {
             mergeSort(sortArray, leftId, midId);
             
             mergeSort(sortArray, midId+1, rightId);
- 
-            merge(sortArray, leftId, midId+1, rightId);
+
+            merge(sortArray, leftId, midId, rightId);
         }//endIf
-        
+        return;
     }// end of mergeSort()
     
     public void merge(int[] sortArray, int leftId, int midId, int rightId)
     {
-        int[] tempArray = new int[rightId-leftId+1];
-        int ii=leftId;
-        int jj = midId-1;
-        int kk = 0;
-        //int n = rightId - ii+1;
+        int[] leftArray = new int[midId-leftId+1];
+        int[] rightArray = new int[rightId-leftId];
+        int la = leftArray.length;
+        int ra = rightArray.length;
+        int leftIndex = 0;
+        int rightIndex = 0;
 
-        System.out.println()
+        //Copy sortArray into temporary arrays
+        for (int yy=0; yy < la; yy++) {
+            leftArray[yy] = sortArray[leftId + yy];
+        }
+
+        for (int yy=0; yy < ra; yy++) {
+            rightArray[yy] = sortArray[midId + yy + 1];
+        }
+
+        for (int yy = leftId; yy < rightId+1; yy++) {
+            if (leftIndex < la && rightIndex < ra) {
+                if (leftArray[leftIndex] < rightArray[rightIndex]) {
+                    sortArray[yy] = leftArray[leftIndex];
+                    leftIndex++;
+                }
+                else {
+                    sortArray[yy] = rightArray[rightIndex];
+                    rightIndex++;
+                }
+            }
+            else if (leftIndex < la) {
+                sortArray[yy] = leftArray[leftIndex];
+                leftIndex++;
+            }
+            else if (rightIndex < ra) {
+                sortArray[yy] = rightArray[rightIndex];
+                rightIndex++;
+            }
+        }
+
+        /*
         while ((ii <= midId) && (jj <= rightId)) {
             if (sortArray[ii] <= sortArray[jj]) {
                 tempArray[kk] = sortArray[ii];
@@ -36,12 +73,20 @@ public class MergeSort {
             kk = kk+1;
         }
 
+        System.out.println(ii);
+        System.out.println(jj);
+        System.out.println(leftId);
+        System.out.println(midId);
+        System.out.println(rightId);
+
         for (int yy=ii; yy<midId; yy++) {
+            System.out.println("1: "+yy);
             tempArray[kk] = sortArray[yy];
             kk = kk+1;
         }
 
         for (int yy=jj; yy<rightId; yy++) {
+            System.out.println("2: "+yy);
             tempArray[kk] = sortArray[yy];
             kk = kk+1;
         }

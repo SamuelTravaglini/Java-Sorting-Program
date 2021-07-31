@@ -1,6 +1,8 @@
+/* Quick Sort Algorithm Class
+** Based on algorithm from Curtin University COMP1001 Lecture
+** Author: Samuel Travaglini
+*/
 import java.util.*;
-
-
 public class SortApp {
 
     //class SortApp

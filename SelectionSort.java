@@ -1,3 +1,8 @@
+/* Quick Sort Algorithm Class
+** Based on algorithm from Curtin University COMP1001 Lecture
+** Author: Samuel Travaglini
+** Time complexity: O(logN)
+*/
 public class SelectionSort {
 
     // selection sort
