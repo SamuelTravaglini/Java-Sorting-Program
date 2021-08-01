@@ -1,13 +1,13 @@
-/* Quick Sort Algorithm Class
-** Based on algorithm from Curtin University COMP1001 Lecture
+/*  Sorting Program
 ** Author: Samuel Travaglini
 */
+
 import java.util.*;
+
 public class SortApp {
 
     //class SortApp
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         int size;
         int count=1;
         
@@ -16,7 +16,7 @@ public class SortApp {
         InsertionSort ins = new InsertionSort();
         SelectionSort ses = new SelectionSort();
         MergeSort mge = new MergeSort();
-        //QuickSort quik = new QuickSort();
+        QuickSort quik = new QuickSort();
 
         int[] sortArray, unSortArray;
         
@@ -28,65 +28,71 @@ public class SortApp {
             sortArray = new int[size];
             unSortArray = new int[size];
             
+            //Enter array values
             for (int ii=0; ii< size; ii++) { 
                 System.out.println("Enter Integer "+ count +":");
                 sortArray[ii] = sc.nextInt();
                 count = count+1;
-            }
+            }//end for
             
             sc.close();
 
-            //Copy random number array to another to keep unsorted
+            //Copy unsorted array to another to keep unsorted
             for (int ii=0; ii< size; ii++) { 
                 unSortArray[ii] = sortArray[ii];
-            }
+            }//end for
 
             //Call bubble sort class
-            System.out.println("*** Bubble Sort ***");     
+            System.out.println("\n*** Bubble Sort ***");     
             System.out.println("Before Bubble Sort:");
-            bub.printSortedArray(sortArray);
+            sort.printSortedArray(sortArray);
             bub.bSorting(sortArray);
             System.out.println("After Bubble Sort:");
-            bub.printSortedArray(sortArray);
+            sort.printSortedArray(sortArray);
 
             //Reset array
             sort.resetArray(sortArray, unSortArray);
 
-            System.out.println("*** Insertion Sort ***"); 
+            //Call insertion sort class
+            System.out.println("\n*** Insertion Sort ***"); 
             System.out.println("Before Insertion Sort:");
-            ins.printSortedArray(sortArray);
+            sort.printSortedArray(sortArray);
             ins.iSorting(sortArray);
             System.out.println("After Insertion Sort:");
-            ins.printSortedArray(sortArray);
+            sort.printSortedArray(sortArray);
 
             //Reset array
             sort.resetArray(sortArray, unSortArray);
 
-            System.out.println("*** Selection Sort ***"); 
+            //Call selection sort class
+            System.out.println("\n*** Selection Sort ***"); 
             System.out.println("Before Selection Sort:");
-            ses.printSortedArray(sortArray);
+            sort.printSortedArray(sortArray);
             ses.sSorting(sortArray);
             System.out.println("After Selection Sort:");
-            ses.printSortedArray(sortArray);
+            sort.printSortedArray(sortArray);
 
             //Reset array
             sort.resetArray(sortArray, unSortArray);
 
-            System.out.println("*** Merge Sort ***"); 
+            //Call merge sort class
+            System.out.println("\n*** Merge Sort ***"); 
             System.out.println("Before Merge Sort:");
-            mge.printSortedArray(sortArray);;
+            sort.printSortedArray(sortArray);
             mge.mergeSort(sortArray, 0, sortArray.length-1);
             System.out.println("After Merge Sort:");
-            mge.printSortedArray(sortArray);
+            sort.printSortedArray(sortArray);
 
-            /*System.out.println("*** Quick Sort ***"); 
+            //Reset array
+            sort.resetArray(sortArray, unSortArray);
+
+            //Call quick sort class
+            System.out.println("\n*** Quick Sort ***"); 
             System.out.println("Before Quick Sort:");
-            sortObject.display();
-            sortObject.quickSort();
+            sort.printSortedArray(sortArray);
+            quik.quickSort(sortArray, 0, sortArray.length-1);
             System.out.println("After Quick Sort:");
-            sortObject.display(); */
-        
-    
+            sort.printSortedArray(sortArray);
        }//end Try
        catch(Exception e)
        {
@@ -100,14 +106,19 @@ public class SortApp {
    }//end of main
 
 
-   public int[] resetArray(int[] sortArray, int[] unSortArray) {
-       
+   public int[] resetArray(int[] sortArray, int[] unSortArray) {  
        for (int ii=0; ii< sortArray.length; ii++) { 
            sortArray[ii] = unSortArray[ii];
-       }
-
+       }//end for
        return sortArray;
    }
+
+   public void printSortedArray(int[] sortArray) {
+    for (int i=0; i < sortArray.length; i++) {
+        System.out.print(sortArray[i] + " ");
+    }
+    System.out.println();
+   }//end for
 
 }//end of class
 

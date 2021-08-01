@@ -1,53 +1,51 @@
-/* Quick Sort Algorithm Class
-** Based on algorithm from Curtin University COMP1001 Lecture
+/* Quick Sort Algorithm
+** Based on algorithm from Curtin University COMP1002 Lecture
 ** Author: Samuel Travaglini
-** Time complexity: O(logN)
+** Time complexity: O(NlogN)
 */
 
 public class QuickSort {
-  /*
-    // quickSort - front-end for kick-starting the recursive algorithm
-    public void quickSort(int[] sortArray)
-    {
-        quickSortRecurse(0, nElems-1);
-    }//end of quickSort()
-    
-    private void quickSortRecurse(int leftId, int rightId)
-    {
+
+    public void quickSort(int[] sortArray, int leftId, int rightId) {
         if (rightId > leftId)
         {
+            //pivot strategy, middle element
             int pivotId = (leftId+rightId)/2;
-            int newPivotId = doPartitioning(leftId, rightId, pivotId);
-            
-            quickSortRecurse(leftId, newPivotId-1)
-            quickSortRecurse(newPivotId+1, rightId)
+            int newPivotId = doPartitioning(sortArray, leftId, rightId, pivotId);
+
+            //Recurse sort left partition
+            quickSort(sortArray, leftId, newPivotId-1);
+            //Recurse sort right partition
+            quickSort(sortArray, newPivotId+1, rightId);
         }//endIf
-        
     }//end of quickSortRecurse()
-    private int doPartitioning(int leftId, int rightId, int pivotId)
+
+    private int doPartitioning(int[] sortArray, int leftId, int rightId, int pivotId)
     {
         int pivotVal = sortArray[pivotId];
         sortArray[pivotId] = sortArray[rightId];
         sortArray[rightId] = pivotVal;
-        
+
         int currId = leftId;
         
-        for (int ii = leftId; ii<rightId-1; ii++)
-        {
-            if (sortArray[ii] < pivotVal) then
-            {
+        /* Find all values that are smaller than the pivot and transfer
+        ** them to the left hand side of the array.
+         */
+        for (int ii = leftId; ii <= (rightId-1); ii++) {
+            if (sortArray[ii] < pivotVal) {
                 int temp = sortArray[ii];
                 sortArray[ii] = sortArray[currId];
                 sortArray[currId] = temp;
-                currId = currId =1;
+                currId ++;
             }//endIf
         }//endFor
-        
+
+        //Put pivot value into place
         int newPivotId = currId;
         sortArray[rightId] = sortArray[newPivotId];
         sortArray[newPivotId] = pivotVal;
-        
-        return pivotVal;
+    
+        return newPivotId;
     }//end of doPartitioning
-    */
+
 }

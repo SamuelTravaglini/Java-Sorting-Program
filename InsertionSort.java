@@ -1,24 +1,21 @@
-/* Quick Sort Algorithm Class
-** Based on algorithm from Curtin University COMP1001 Lecture
+/* Insertion Sort Algorithm Class
+** Based on algorithm from Curtin University COMP1002 Lecture
 ** Author: Samuel Travaglini
-** Time complexity: O(logN)
+** Time complexity: O(N^2)
 */
 
 public class InsertionSort {
     
     // insertion sort
-    public void iSorting(int[] sortArray)
-    {
+    public void iSorting(int[] sortArray) {
         int temp;
         int n = sortArray.length;
 
-        for (int jj=1; jj < n; jj++)
-        {
+        for (int jj=1; jj < n; jj++) {
             int ii=jj;
             temp = sortArray[ii];
 
-            while ((ii > 0) && (sortArray[ii-1] > temp))
-            {
+            while ((ii > 0) && (sortArray[ii-1] > temp)) {
                 sortArray[ii] = sortArray[ii-1]; 
                 ii=ii-1;
             }//endWhile
@@ -26,13 +23,5 @@ public class InsertionSort {
         }//endFor
 
     }// end of insertionSort()
-
-    
-    void printSortedArray(int[] sortArray) {
-        for (int i=0; i < sortArray.length; i++) {
-            System.out.print(sortArray[i] + " ");
-        }
-        System.out.println();
-    }
     
 }
