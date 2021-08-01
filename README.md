@@ -1,6 +1,6 @@
 # Java-Sorting-Program
 
-This is my practical exercises of different sorting algorithms from Curtin University. It contains:
+This is a practical exercise of different sorting algorithms from Curtin University. It contains:
 1. Bubble Sort
 2. Insertion Sort
 3. Selection Sort
